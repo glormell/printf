@@ -1,3 +1,5 @@
 [remote "github"]
 	url = https://github.com/glormell/printf.git
 	fetch = +refs/heads/*:refs/remotes/github/*
+[alias]
+	pushall = !git remote | xargs -L1 git push --all
