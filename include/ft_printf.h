@@ -19,6 +19,7 @@
 # include <wchar.h>
 # include <limits.h>
 # include <stdint.h>
+# define DABS(x) (((x) < 0.0f) ? (-x) : (x))
 
 typedef enum		e_mod
 {
@@ -33,8 +34,14 @@ typedef enum		e_mod
 	L = 8
 }					t_mod;
 
+union				u_vivon
+{
+	unsigned long long	l;
+	double			d;
+}				u;
+
 /*
-** 0 = NONE 1 = HASH 2 = ZERO 4 = MINUS 8 = PLUS 16 = SPACE
+** 0 = NONE 1 = HASH 2 = ZERO 4 = MINUS 8 = PLUS 16 = SPACE 32 = NEG FLOAT
 */
 typedef struct		s_xren
 {
@@ -46,11 +53,14 @@ typedef struct		s_xren
 	char			type;
 	t_mod			mod;
 	int				err;
+	char			flaL;
 	void			*value;
 }					t_xren;
 
 int					ft_printf(const char *format, ...);
 int					just_starting_some_shit(const char *format, va_list args);
+int					handle_float(t_xren x, va_list args);
+int					double_prep(t_xren *x, int num_len);
 int					whos_next(int a, int b);
 
 /*
@@ -134,5 +144,7 @@ size_t				ft_strlen(const char *s, const size_t max);
 char				*ft_itoa_base(intmax_t n, t_xren x, char sign, int base);
 char				*ft_uitoa_base(uintmax_t n, unsigned int base,
 		const char *digits, size_t prec);
+int				ft_ldtoa(t_xren x, long double num,
+		int int_len, int tot_len);
 
 #endif

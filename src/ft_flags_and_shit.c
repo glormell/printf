@@ -64,6 +64,7 @@ int		what_the_hell_is_add(t_xren *x, const char *format, size_t *i)
 	if (format[*i] != '.')
 		return (0);
 	x->prec = 0;
+	x->flags |= 64;
 	(*i)++;
 	if (ft_atoi(format, 0, &prec, i))
 		return (1);
@@ -96,6 +97,8 @@ int		my_friends_say(t_xren *x, const char *format, size_t *i)
 		m = j;
 	else if (format[*i] == 'z')
 		m = z;
+	else if (format[*i] == 'L')
+		x->flaL = 1;
 	x->mod = (m > x->mod) ? m : x->mod;
 	return ((*i)++ & 0);
 }

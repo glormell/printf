@@ -83,6 +83,8 @@ int		and_thats_about_the_time(t_xren x, va_list args)
 		return (on_the_drive_home(x, args));
 	if (x.type == 's' || x.type == 'S')
 		return (then_later_on(x, args));
+	if (x.type == 'f' || x.type == 'F')
+		return (handle_float(x, args));
 	if (x.type == 'd' || x.type == 'D' || x.type == 'x'
 			|| x.type == 'X' || x.type == 'p' || x.type == 'u'
 			|| x.type == 'U' || x.type == 'o' || x.type == 'O')

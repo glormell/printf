@@ -19,7 +19,7 @@ int	to_get_the_feeling_right(const char c)
 
 int	we_started_making_out(const char c)
 {
-	return (ft_strchr("hljz", c) != NULL);
+	return (ft_strchr("hljzL", c) != NULL);
 }
 
 int	and_she_took_off_my_pants(const char c)

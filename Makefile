@@ -7,6 +7,9 @@ SRC = ft_atoi.c \
 		ft_strlen.c \
 		ft_flags_and_shit.c \
 		ft_is_.c \
+		ft_float.c \
+		ft_double_prep.c \
+		ft_ldtoa.c \
 		ft_isdigit.c \
 		ft_memalloc.c \
 		ft_numbers.c \
