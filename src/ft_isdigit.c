@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_isdigit(const char c)
+int		ft_isdigit(const char c)
 {
 	return (c >= '0' && c <= '9');
 }

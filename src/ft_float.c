@@ -39,7 +39,7 @@ static long double	get_ld(t_xren x, va_list args, size_t *len)
 	uintmax_t	tmp;
 
 	*len = 0;
-	if (x.flaL)
+	if (x.flal)
 		num = va_arg(args, long double);
 	else
 		num = (long double)va_arg(args, double);

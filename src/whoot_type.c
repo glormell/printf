@@ -6,7 +6,7 @@
 /*   By: myname <myname@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 20:40:25 by srolland          #+#    #+#             */
-/*   Updated: 2019/02/26 19:47:51 by srolland         ###   ########.fr       */
+/*   Updated: 2019/03/03 21:36:26 by srolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ int		nobody_likes_you(const char *str, const size_t len)
 	return (len);
 }
 
-int		i_should_act_my_age(t_xren *x, const char *format, size_t *i)
+int		i_should_act_my_age(t_xren *x, const char *format, size_t *i,
+		va_list args)
 {
-	static int	(*another_shit[6])(t_xren *, const char *, size_t *) = {
+	static int	(*ano[6])(t_xren *, const char *, size_t *, va_list args) = {
 		and_are_still_amused, by_the_tv_show,
 		what_the_hell_is_add, my_friends_say, i_should_act_my_age};
 	size_t		t;
@@ -48,7 +49,7 @@ int		i_should_act_my_age(t_xren *x, const char *format, size_t *i)
 		{
 			if (*i < x->len)
 				while (++t < 5)
-					if ((*another_shit[t])(x, format, i))
+					if ((*ano[t])(x, format, i, args))
 						return (1);
 		}
 	}

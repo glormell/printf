@@ -6,7 +6,7 @@
 /*   By: srolland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 19:26:02 by srolland          #+#    #+#             */
-/*   Updated: 2019/03/03 19:36:18 by srolland         ###   ########.fr       */
+/*   Updated: 2019/03/04 00:18:50 by srolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,12 @@ static uintmax_t	power_ten(uintmax_t power)
 		return (10 * power_ten(power - 1));
 }
 
-static void			round(long double *f, int prec)
+static long double	my_round(long double f, int prec)
 {
-	static const double	rounders[11] = {
-		0.5, 0.05, 0.005, 0.0005, 0.00005, 0.000005, 0.0000005,
-		0.00000005, 0.000000005, 0.0000000005, 0.00000000005};
-
-	if (prec && *f > 0.0)
-		*f += rounders[prec];
-	else if (prec && *f < 0.0)
-		*f -= rounders[prec];
+	if (prec > 0)
+		return (my_round(f * 10.0, prec - 1) / 10.0);
+	else
+		return (f);
 }
 
 static void			int_part(t_xren x, uintmax_t num, size_t int_len,
@@ -64,7 +60,7 @@ int					ft_ldtoa(t_xren x, long double num, int int_len,
 	char		res[59];
 	long double	frac;
 
-	round(&num, x.prec);
+	num = my_round(num, x.prec);
 	int_part(x, (uintmax_t)DABS(num), int_len, res);
 	x.flags |= 128;
 	if (x.prec != 0)

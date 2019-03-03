@@ -6,15 +6,16 @@
 /*   By: srolland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 20:36:52 by srolland          #+#    #+#             */
-/*   Updated: 2019/02/23 20:39:54 by srolland         ###   ########.fr       */
+/*   Updated: 2019/03/03 21:29:38 by srolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_xren		she_walked_away_from_me(const char *format, size_t len)
+t_xren		she_walked_away_from_me(const char *format, size_t len,
+		va_list args)
 {
-	static int	(*shit[6])(t_xren *, const char *, size_t *) = {
+	static int	(*shit[6])(t_xren *, const char *, size_t *, va_list) = {
 		and_are_still_amused, by_the_tv_show,
 		what_the_hell_is_add, my_friends_say, i_should_act_my_age};
 	t_xren		x;
@@ -26,7 +27,7 @@ t_xren		she_walked_away_from_me(const char *format, size_t len)
 	ft_bzero(&x, sizeof(x));
 	x.len = len;
 	while (++i < 5)
-		if ((*shit[i])(&x, format + 1, &pos))
+		if ((*shit[i])(&x, format + 1, &pos, args))
 		{
 			x.err = 1;
 			break ;
@@ -46,7 +47,7 @@ int			it_was_a_friday_night(const char *format, size_t len,
 {
 	if (*format == '%' && last)
 		return (and_thats_about_the_time(
-					she_walked_away_from_me(format, len), args));
+					she_walked_away_from_me(format, len, args), args));
 	else
 		return (nobody_likes_you(format, len));
 }

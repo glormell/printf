@@ -6,7 +6,7 @@
 /*   By: srolland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 21:37:49 by srolland          #+#    #+#             */
-/*   Updated: 2019/02/23 21:47:53 by srolland         ###   ########.fr       */
+/*   Updated: 2019/03/03 21:33:52 by srolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,15 @@ typedef enum		e_mod
 union				u_vivon
 {
 	unsigned long long	l;
-	double			d;
-}				u;
+	double				d;
+}					u;
 
 /*
 ** 0 = NONE 1 = HASH 2 = ZERO 4 = MINUS 8 = PLUS 16 = SPACE 32 = NEG FLOAT
 */
 typedef struct		s_xren
 {
+	int				aster;
 	int				flags;
 	int				prec;
 	unsigned int	width;
@@ -53,7 +54,7 @@ typedef struct		s_xren
 	char			type;
 	t_mod			mod;
 	int				err;
-	char			flaL;
+	char			flal;
 	void			*value;
 }					t_xren;
 
@@ -78,17 +79,20 @@ int					and_she_took_off_my_pants(const char c);
 int					but_then_i_turned_on_the_tv(const char c);
 
 int					and_thats_about_the_time(t_xren x, va_list args);
-t_xren				she_walked_away_from_me(const char *format, size_t len);
+t_xren				she_walked_away_from_me(const char *format, size_t len,
+		va_list args);
 int					nobody_likes_you(const char *format, size_t len);
 int					when_youre_23(t_xren *x, const char *format, size_t *i);
 int					and_are_still_amused(t_xren *x, const char *format,
-		size_t *i);
-int					by_the_tv_show(t_xren *x, const char *format, size_t *i);
+		size_t *i, va_list args);
+int					by_the_tv_show(t_xren *x, const char *format, size_t *i,
+		va_list args);
 int					what_the_hell_is_add(t_xren *x, const char *format,
-		size_t *i);
-int					my_friends_say(t_xren *x, const char *format, size_t *i);
+		size_t *i, va_list args);
+int					my_friends_say(t_xren *x, const char *format, size_t *i,
+		va_list args);
 int					i_should_act_my_age(t_xren *x, const char *format,
-		size_t *i);
+		size_t *i, va_list args);
 /*
 ** 					What's my age again?
 **					What's my age again?
@@ -144,7 +148,7 @@ size_t				ft_strlen(const char *s, const size_t max);
 char				*ft_itoa_base(intmax_t n, t_xren x, char sign, int base);
 char				*ft_uitoa_base(uintmax_t n, unsigned int base,
 		const char *digits, size_t prec);
-int				ft_ldtoa(t_xren x, long double num,
+int					ft_ldtoa(t_xren x, long double num,
 		int int_len, int tot_len);
 
 #endif
