@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_double_prep.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: srolland <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/03 19:24:02 by srolland          #+#    #+#             */
+/*   Updated: 2019/03/03 19:24:11 by srolland         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int	support(t_xren *x)
@@ -11,7 +23,7 @@ static int	support(t_xren *x)
 	return (0);
 }
 
-int		double_prep(t_xren *x, int num_len)
+int			double_prep(t_xren *x, int num_len)
 {
 	int	zp_len;
 	int	wp_len;

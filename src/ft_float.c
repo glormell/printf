@@ -6,13 +6,13 @@
 /*   By: srolland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 20:05:01 by srolland          #+#    #+#             */
-/*   Updated: 2019/02/26 20:13:06 by srolland         ###   ########.fr       */
+/*   Updated: 2019/03/03 19:25:56 by srolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		isnan(long double d)
+static int			isnan(long double d)
 {
 	union u_vivon	u;
 
@@ -20,7 +20,7 @@ static int		isnan(long double d)
 	return (u.l == 0x7FF8000000000000ll || u.l == 0xFFF8000000000000ll);
 }
 
-static int		isinf(long double d)
+static int			isinf(long double d)
 {
 	union u_vivon	u;
 
@@ -45,13 +45,13 @@ static long double	get_ld(t_xren x, va_list args, size_t *len)
 		num = (long double)va_arg(args, double);
 	tmp = (uintmax_t)DABS(num);
 	if (!tmp)
-	*len += 1;
+		*len += 1;
 	while (tmp && ++(*len))
 		tmp /= 10;
 	return (num);
 }
 
-static int		handle_invalid(t_xren x, long double num, int inf)
+static int			handle_invalid(t_xren x, long double num, int inf)
 {
 	if (isnan(num))
 	{
@@ -74,12 +74,12 @@ static int		handle_invalid(t_xren x, long double num, int inf)
 	return (0);
 }
 
-int			handle_float(t_xren x, va_list args)
+int					handle_float(t_xren x, va_list args)
 {
 	long double	num;
 	size_t		int_len;
 	size_t		tot_len;
-	int		ret;
+	int			ret;
 
 	ret = 0;
 	num = get_ld(x, args, &int_len);
