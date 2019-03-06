@@ -35,12 +35,10 @@ static long double	my_round(long double f, int prec)
 		return (f);
 }
 
-static void			int_part(t_xren x, uintmax_t num, size_t int_len,
-		char res[59])
+static void			int_part(t_xren x, uintmax_t num, size_t int_len, char res[59])
 {
 	char	c_case;
 	size_t	tmp_len;
-	size_t	len_diff;
 
 	c_case = ('a' - 10 - (('a' - 'A') * (x.type == 'F')));
 	tmp_len = int_len;
@@ -48,7 +46,6 @@ static void			int_part(t_xren x, uintmax_t num, size_t int_len,
 	{
 		if (x.flags & 128 && x.prec-- == 0)
 			break ;
-		len_diff = int_len - tmp_len;
 		res[tmp_len] = (num % 10) + ((num % 10 < 10) ? '0' : c_case);
 		num /= 10;
 	}
